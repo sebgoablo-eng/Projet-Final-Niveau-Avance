@@ -4,14 +4,15 @@ import '../controllers/animal_controller.dart';
 import '../models/animal_model.dart';
 
 class AnimalProvider extends ChangeNotifier {
-  final AnimalController _controller = AnimalController();
+  final AnimalController _controller;
+
+  AnimalProvider({AnimalController? controller})
+    : _controller = controller ?? AnimalController();
 
   List<Animal> _animals = [];
-
   bool _isLoading = false;
 
   List<Animal> get animals => _animals;
-
   bool get isLoading => _isLoading;
 
   /// Charger tous les animaux

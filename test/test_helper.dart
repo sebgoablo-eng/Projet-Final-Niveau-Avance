@@ -4,12 +4,16 @@ import 'package:provider/provider.dart';
 
 import 'package:agritroupeau/providers/animal_provider.dart';
 
+import 'fakes/fake_animal_controlller.dart';
+
 class TestHelper {
   /// Widget de base pour les tests
   static Widget createTestApp(Widget child) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AnimalProvider>(create: (_) => AnimalProvider()),
+        ChangeNotifierProvider<AnimalProvider>(
+          create: (_) => AnimalProvider(controller: FakeAnimalController()),
+        ),
       ],
       child: MaterialApp(debugShowCheckedModeBanner: false, home: child),
     );

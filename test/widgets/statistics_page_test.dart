@@ -5,11 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:agritroupeau/providers/animal_provider.dart';
 import 'package:agritroupeau/views/statistics/statistics_page.dart';
 
+import '../fakes/fake_animal_controlller.dart';
+
 void main() {
   testWidgets("Page statistiques", (tester) async {
     await tester.pumpWidget(
       ChangeNotifierProvider(
-        create: (_) => AnimalProvider(),
+        create: (_) => AnimalProvider(controller: FakeAnimalController()),
 
         child: const MaterialApp(home: StatisticsPage()),
       ),
